@@ -1,19 +1,27 @@
+var path = require('path')
+const express = require('express') // Require Express to run server and routes
+const bodyParser = require('body-parser') // Middleware
+const cors = require('cors') // Cross-origin allowance
+const fetch = require('node-fetch'); // Node JS Fetch
+
+// Use dotenv to process API key from .env file 
+const dotenv = require('dotenv');
+dotenv.config();
+
+
+
 // Setup empty JS object to act as endpoint for all routes
 const projectData = [];
 
-// Require Express to run server and routes
-const express = require('express');
 
 // Start up an instance of app
 const app = express();
 
 /* Middleware*/
-const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-const cors = require('cors');
 app.use(cors());
 
 
