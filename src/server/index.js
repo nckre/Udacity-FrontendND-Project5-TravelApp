@@ -8,11 +8,8 @@ const fetch = require('node-fetch'); // Node JS Fetch
 const dotenv = require('dotenv');
 dotenv.config();
 
-
-
 // Setup empty JS object to act as endpoint for all routes
 const projectData = [];
-
 
 // Start up an instance of app
 const app = express();
@@ -24,9 +21,8 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 app.use(cors());
 
-
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 const port = 3000;
 // Setup Server
@@ -36,15 +32,16 @@ function listening() {
 };
 
 // Respond with Project Data when a GET request is made to the homepage
-app.get('/all', getData)
+app.get('/', function (req, res) {
+  res.sendFile('dist/index.html')
+})
 
+app.get('/weather', getData)
 function getData(req,res){
   res.send(projectData)
 }
 
 // Add weather entry with POST request 
-app.post('/addEntry', cors(), addEntry);
-
 function addEntry(req,res){
   newEntry = {
     temp: req.body.temp,
@@ -55,3 +52,5 @@ function addEntry(req,res){
   res.send(projectData);
   console.log(projectData)
 }
+
+app.post('/addEntry', cors(), addEntry);

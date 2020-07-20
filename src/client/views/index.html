@@ -20,7 +20,9 @@
   <div class ="holder feel">
     <label for="feelings">How are you feeling today?</label>
     <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
+    <form class="" onsubmit="return Client.handleSubmit(event)">
+    <button id="generate" type = "submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> Generate </button>
+  </form>
   </div>
   <div class ="holder entry">
     <div class = "title">Most Recent Entry</div>
