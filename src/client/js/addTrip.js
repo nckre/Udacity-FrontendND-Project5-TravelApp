@@ -64,7 +64,7 @@ const weatherLookup = async (coordinates, timeDifference, startDate) => {
 } 
 }}
 
-// Calculate the duration of the trip as time difference between start and end date
+//ROADMAP: Calculate the duration of the trip as time difference between start and end date
 function travelTime (startDate, endDate) {
     const start = dateify(startDate);
     const end = dateify(endDate);
