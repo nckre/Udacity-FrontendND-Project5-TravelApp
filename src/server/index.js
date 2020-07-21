@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = [];
+const tripData = [];
 
 // Start up an instance of app
 const app = express();
@@ -36,21 +36,25 @@ app.get('/', function (req, res) {
   res.sendFile('dist/index.html')
 })
 
-app.get('/weather', getData)
-function getData(req,res){
-  res.send(projectData)
+app.get('/trips', getTrips)
+function getTrips(req,res){
+  console.log(tripData);
+  res.send(tripData)
 }
+
+
+app.post('/addTrip', cors(), addTrip);
 
 // Add weather entry with POST request 
-function addEntry(req,res){
+function addTrip(req,res){
   newEntry = {
-    temp: req.body.temp,
-    date: req.body.date,
-    feelings: req.body.feelings
+    city: req.body.goto,
+    start_date: req.body.start,
+    end_date: req.body.end,
+    duration: req.body.duration,
+    temperature: req.body.temp,
+    preview: req.body.pic
 }
-  projectData.push(newEntry);
-  res.send(projectData);
-  console.log(projectData)
+  tripData.push(newEntry);
+  res.send(tripData);
 }
-
-app.post('/addEntry', cors(), addEntry);

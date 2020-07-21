@@ -11,25 +11,28 @@
   <div class ="holder headline">
     Weather Journal App
   </div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-    <label for="country">Enter Country Code (e.g. us, de) here</label>
-    <input type="text" id="country" placeholder="enter country code here">
+  <div class ="holder trip">
+    <label for="city">Enter your Trip Details here</label>
+    City
+    <input type="text" id="city" placeholder="Dream Destination"> 
+    Start Date
+    <input type="date" id="start_date" placeholder="Travel Start Date"> 
+    End Date
+    <input type="date" id="end_date" placeholder="Travel End Date">
+    <br>
+    <form class="" onsubmit="return Client.addTrip(event)">
+      <button id="trip" type = "submit" onclick="return Client.addTrip(event)" onsubmit="return Client.addTrip(event)"> Add Trip </button>
   </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <form class="" onsubmit="return Client.handleSubmit(event)">
-    <button id="generate" type = "submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> Generate </button>
-  </form>
-  </div>
+  <br>
   <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-  <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
+    <div class = "title">Last Trip</div>
+  <div id = "entryHolder">
+    <div id = "tripCity"></div>
+    <div id = "tripStart"></div> 
+    <div id = "tripEnd"></div>
+    <div id = "tripDuration"></div>
+    <div id = "tripTemp"></div>
+    <img id = "tripPic" src="" alt="Image Of City"></img>
   </div>
   
 </body>

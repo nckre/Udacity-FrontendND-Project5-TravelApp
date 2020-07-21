@@ -73,4 +73,7 @@ const updateUI = async () => {
   weatherApp1()
 });
  */
+
+
+
 export { handleSubmit }

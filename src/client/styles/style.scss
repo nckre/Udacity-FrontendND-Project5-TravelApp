@@ -55,8 +55,6 @@ label{
 
 input{
     display:block;
-    height: 60px;
-    width: 320px;
     background:#22b2da;
     color: #f0d43a;
     font-size: 20px;
@@ -65,11 +63,11 @@ input{
 }
 
 button{
-    width: 400px;
-    height: 100px;
+    width: 100px;
+    height: 50px;
     background: #3b4a6b;
     color: #f0d43a;
-    font-size: 26px;
+    font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
