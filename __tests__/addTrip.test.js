@@ -1,8 +1,15 @@
-require("@babel/polyfill");
-const addTrip = require('../src/client/js/addTrip');
+import {describe, expect} from "@jest/globals";
 
-// test if handleSubmit function is defined
-test('Test if function that handles Submit is defined', async () => {
-	expect(addTrip.addTrip)
-	.toBeDefined();
+const request = require("supertest");
+const app = require("../src/server/index");
+
+describe("Test the root path", () => {
+    test("It should response the GET method", done => {
+        request(app)
+            .get("/")
+            .then(response => {
+                expect(response.statusCode).toBe(200);
+                done();
+            });
+    });
 });
