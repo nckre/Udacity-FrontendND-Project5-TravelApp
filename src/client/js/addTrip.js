@@ -1,4 +1,4 @@
-// Search Pixabase and return image of city
+// Search Pixabase for the image of a city and return first result
 const pixabaySearch = async (city) => {
     const pixaKey = "17563206-ffbd8efa2809ee43f7963c9f8";
     const response = await fetch (`https://pixabay.com/api/?key=${pixaKey}&q=${city}&image_type=photo`);
@@ -11,7 +11,7 @@ const pixabaySearch = async (city) => {
         console.log("error", error);
 }}
 
-
+// Search geoname for latitude and longitude of a city name, return first result
 const geonameSearch = async (city) => {
 const response = await fetch(`http://api.geonames.org/searchJSON?q=${city}&username=timetotravel`);
   try{
@@ -30,12 +30,14 @@ const response = await fetch(`http://api.geonames.org/searchJSON?q=${city}&usern
   }
 } 
 
+// Look up the weather at a specific latitude and longitude via Weatherbit API
 const weatherLookup = async (coordinates, timeDifference, startDate) => {
     const key = "ad767b9f50154aeda2ba8dd8e856262c"
     const corsAnywhere = "https://cors-anywhere.herokuapp.com/"
     const forecast = "http://api.weatherbit.io/v2.0/forecast/daily?lat="
     const history = "http://api.weatherbit.io/v2.0/history/daily?lat="
-    if (timeDifference < 8) {
+    // Use Forecast API for trips within the next 7 days
+    if (timeDifference < 7) {
         const url = corsAnywhere+forecast+coordinates.lat+"&lon="+coordinates.lng+"&days=7&key="+key;
         const shortTermForecast = await fetch(url);
         try {
@@ -46,6 +48,7 @@ const weatherLookup = async (coordinates, timeDifference, startDate) => {
             console.log("error", error);
     }} else {
     let dummyDate = addDay(startDate);
+    // Use History API for future trips not within the next 7 days 
     let url = corsAnywhere+history+coordinates.lat+"&lon="+coordinates.lng+"&start_date="+startDate+"&end_date="+dummyDate+"&key="+key;
     const longTermForecast = await fetch(url);
     try {
@@ -61,6 +64,7 @@ const weatherLookup = async (coordinates, timeDifference, startDate) => {
 } 
 }}
 
+// Calculate the duration of the trip as time difference between start and end date
 function travelTime (startDate, endDate) {
     const start = dateify(startDate);
     const end = dateify(endDate);
@@ -72,6 +76,7 @@ function travelTime (startDate, endDate) {
     }
 }
 
+// Check how many days from now the trip is starting.
 function dateCountdown (startDate) {
     let today = new Date();
     let travelDate = dateify(startDate); 
@@ -85,6 +90,7 @@ function dateCountdown (startDate) {
     }
 }
 
+// Convert YYYY-MM-DD date to JS date
 function dateify (simpleDate) {
     let year = simpleDate.substring(0,4);
     let month = simpleDate.substring(5,7);
@@ -93,7 +99,7 @@ function dateify (simpleDate) {
     return newDate
 }
 
-
+// Add a day to YYYY-MM-DD date to create dummy enddate for Weatherbit History API
 function addDay(date) {
     let d = new Date(date),
     month = '' + (d.getMonth() + 1),
@@ -124,7 +130,7 @@ const postTrip = async ( url = 'http://localhost:3000/addTrip', data = {})=>{
   }
 }
 
- // Update UI with weather data & user input
+ // Update UI with trip data received from server
 const updateUI = async () => {
     const request = await fetch('http://localhost:3000/trips');
     try{
@@ -148,6 +154,7 @@ const updateUI = async () => {
     }  
   } 
 
+// Add a trip to the server & receive the last trip to update UI
 async function addTrip(event){
     event.preventDefault()
     const city = document.getElementById('city').value; 

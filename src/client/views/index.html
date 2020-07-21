@@ -2,17 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Weather Journal</title>
+<title>Travel Planner App</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main.css">>
 </head>
  <body>
 <div id = "app">
   <div class ="holder headline">
-    Weather Journal App
+    Travel Planner App
   </div>
   <div class ="holder trip">
-    <label for="city">Enter your Trip Details here</label>
+    <h2>Enter Your Trip Details</h2>
     City
     <input type="text" id="city" placeholder="Dream Destination"> 
     Start Date
@@ -20,12 +20,13 @@
     End Date
     <input type="date" id="end_date" placeholder="Travel End Date">
     <br>
+    <br>
     <form class="" onsubmit="return Client.addTrip(event)">
       <button id="trip" type = "submit" onclick="return Client.addTrip(event)" onsubmit="return Client.addTrip(event)"> Add Trip </button>
   </div>
   <br>
+  <h2>Last planned trip</h2>
   <div class ="holder entry">
-    <div class = "title">Last Trip</div>
   <div id = "entryHolder">
     <div id = "tripCity"></div>
     <div id = "tripStart"></div> 
