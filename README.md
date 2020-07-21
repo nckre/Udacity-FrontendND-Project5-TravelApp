@@ -9,7 +9,7 @@ This web app leverages a [Node JS](https://https://nodejs.org/en/) server and th
 3. Run the `server.js` file via the terminal by running `npm run start` in the respective directory
 4. Open the web page on your browser at `http://localhost:3000/`
 5. Enter a valid City Name (e.g. `Paris`), pick a start date that's at least 1 day in the future and and end date 1+ days after start date.
-6. Click on the `Add Trip` button to update the server with your entries & display the most recent trip below the input fields
+6. Click on the `submit` button to GET the Aylien Results and display them in the webpage. 
 
 ## Setup
 The webapp consists of 2 main parts:
