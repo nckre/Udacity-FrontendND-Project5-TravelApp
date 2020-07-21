@@ -1,7 +1,7 @@
 // Search Pixabase for the image of a city and return first result
 const pixabaySearch = async (city) => {
     const pixaKey = "17563206-ffbd8efa2809ee43f7963c9f8";
-    const response = await fetch (`https://pixabay.com/api/?key=${pixaKey}&q=${city}&image_type=photo`);
+    const response = await fetch (`https://pixabay.com/api/?key=${pixaKey}&q=${city}&category=places&image_type=photo`);
     try{
         const searchResults = await response.json();
         const picture = searchResults.hits[0].webformatURL;
@@ -155,8 +155,7 @@ const updateUI = async () => {
   } 
 
 // Add a trip to the server & receive the last trip to update UI
-async function addTrip(event){
-    event.preventDefault()
+async function addTrip(){
     const city = document.getElementById('city').value; 
     const startDate = document.getElementById('start_date').value;
     const endDate = document.getElementById('end_date').value;

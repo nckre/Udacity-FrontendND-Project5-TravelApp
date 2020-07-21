@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=320, initial-scale=1">
 <title>Travel Planner App</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main.css">>
 </head>
  <body>
 <div id = "app">
@@ -13,16 +13,17 @@
   </div>
   <div class ="holder trip">
     <h2>Enter Your Trip Details</h2>
-    City
-    <input type="text" id="city" placeholder="Dream Destination"> 
-    Start Date
-    <input type="date" id="start_date" placeholder="Travel Start Date"> 
-    End Date
-    <input type="date" id="end_date" placeholder="Travel End Date">
+    <label for="city">City:</label> 
+    <input type="text" id="city" placeholder="Dream Destination" required> 
+    <br>
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" placeholder="Travel Start Date" required> 
+    <br>
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" placeholder="Travel End Date" required>
     <br>
     <br>
-    <form class="" onsubmit="return Client.addTrip(event)">
-      <button id="trip" type = "submit" onclick="return Client.addTrip(event)" onsubmit="return Client.addTrip(event)"> Add Trip </button>
+      <button id="trip" type = "submit"> Add Trip </button>
   </div>
   <br>
   <h2>Last planned trip</h2>

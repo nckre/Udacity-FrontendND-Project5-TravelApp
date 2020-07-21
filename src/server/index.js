@@ -31,11 +31,6 @@ function listening() {
     console.log(`running on localhost: ${port}`);
 };
 
-// Respond with Project Data when a GET request is made to the homepage
-app.get('/', function (req, res) {
-  res.sendFile('dist/index.html')
-})
-
 app.get('/trips', getTrips)
 function getTrips(req,res){
   console.log(tripData);
